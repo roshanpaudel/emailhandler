@@ -1,4 +1,5 @@
 import express from "express";
+import { userUpdateTemplate } from "./nodemailer.js";
 const app = express();
 const PORT = 8000;
 
@@ -9,8 +10,11 @@ app.get("/", (req, res) => {
 });
 
 app.post("/", (req, res) => {
-  // Logic to send email using Nodemailer
   console.log(req.body);
+
+  // Implement Nodemailer
+  userUpdateTemplate();
+  //
   try {
     // Simulate email sending logic here
     res.json({ message: "Email sent successfully" });
