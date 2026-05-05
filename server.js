@@ -2,12 +2,15 @@ import express from "express";
 const app = express();
 const PORT = 8000;
 
+app.use(express.json());
+
 app.get("/", (req, res) => {
   res.json({ message: "Server is running" });
 });
 
-app.post("/send-email", (req, res) => {
+app.post("/", (req, res) => {
   // Logic to send email using Nodemailer
+  console.log(req.body);
   try {
     // Simulate email sending logic here
     res.json({ message: "Email sent successfully" });
@@ -16,8 +19,6 @@ app.post("/send-email", (req, res) => {
     return res.status(500).json({ message: "Failed to send email" });
   }
 });
-
-res.json({ message: "Email sent successfully" });
 
 app.listen(PORT, (error) => {
   error
